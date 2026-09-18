@@ -1,9 +1,13 @@
-import std/options
 import unittest
 
 import naive_sort
 
 # Casos de prueba de la especificación 05_Naive_Sort.md
+#
+# Caso nulo omitido: `seq[int]` no admite `nil` en Nim 2.2 (`var s: seq[int] = nil`
+# es un error de tipo) y esta fase todavía no introduce `Option`. El array puede
+# recibir una entrada vacía, pero no una nula, así que no hay indicador de fallo
+# que comprobar y se conservan los 7 casos de la especificación.
 let
     standardInput = @[5, 2, 9, 1, 5, 6]
     standardOutput = @[1, 2, 5, 5, 6, 9]
@@ -26,39 +30,33 @@ let
     emptyInput: seq[int] = @[]
     emptyOutput: seq[int] = @[]
 
-# Caso nulo incluido: `seq[int]` no admite `nil` en Nim, así que el indicador de
-# fallo se representa con `Option[seq[int]]`; la entrada nula es
-# `none(seq[int])` y la salida esperada es `none(seq[int])`. No se espera
-# ninguna excepción.
 type
     SortCase = object
         description: string
-        input: Option[seq[int]]
-        expected: Option[seq[int]]
+        input: seq[int]
+        expected: seq[int]
 
-    SortProc = proc(arr: Option[seq[int]]): Option[seq[int]]
+    SortProc = proc(arr: var seq[int]): seq[int]
 
 let cases = @[
     SortCase(description: "an unsorted array",
-             input: some(standardInput), expected: some(standardOutput)),
+             input: standardInput, expected: standardOutput),
     SortCase(description: "an already sorted array",
-             input: some(sortedInput), expected: some(sortedOutput)),
+             input: sortedInput, expected: sortedOutput),
     SortCase(description: "a reverse ordered array",
-             input: some(reverseInput), expected: some(reverseOutput)),
+             input: reverseInput, expected: reverseOutput),
     SortCase(description: "an array of identical elements",
-             input: some(identicalInput), expected: some(identicalOutput)),
+             input: identicalInput, expected: identicalOutput),
     SortCase(description: "an array with negative numbers",
-             input: some(negativeInput), expected: some(negativeOutput)),
+             input: negativeInput, expected: negativeOutput),
     SortCase(description: "a single element array",
-             input: some(singleInput), expected: some(singleOutput)),
+             input: singleInput, expected: singleOutput),
     SortCase(description: "an empty array",
-             input: some(emptyInput), expected: some(emptyOutput)),
-    SortCase(description: "a null input",
-             input: none(seq[int]), expected: none(seq[int])),
+             input: emptyInput, expected: emptyOutput),
 ]
 
-# Copia elemento a elemento: los tres algoritmos pueden ordenar in-place sobre
-# el array recibido y los casos son fixtures compartidos.
+# Copia elemento a elemento: los tres algoritmos ordenan in-place sobre el array
+# recibido y los casos son fixtures compartidos.
 proc copyArray(arr: seq[int]): seq[int] =
     result = newSeq[int](arr.len)
     for i in 0 ..< arr.len:
@@ -73,9 +71,7 @@ proc copyArray(arr: seq[int]): seq[int] =
 template assertSortsAllCases(sort: SortProc, algorithm: string) =
     for sortCase in cases:
         let expected = sortCase.expected
-        var actual = sortCase.input
-        if actual.isSome:
-            actual = some(copyArray(actual.get))
+        var actual = copyArray(sortCase.input)
         checkpoint algorithm & " should sort " & sortCase.description
         check sort(actual) == expected
 
