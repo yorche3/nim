@@ -30,7 +30,7 @@ nim/
         │       ├── calculator.nimble
         │       ├── src/
         │       │   └── calculator.nim
-        │       ├── test/
+        │       ├── tests/
         │       │   ├── config.nims
         │       │   └── calculator_test.nim
         │       └── README.md
@@ -38,7 +38,7 @@ nim/
             ├── numbers.nimble
             ├── src/
             │   └── numbers.nim
-            ├── test/
+            ├── tests/
             │   ├── config.nims
             │   ├── recursive_tests.nim
             │   └── iterative_tests.nim
@@ -63,13 +63,13 @@ nim/
 **ES:** Los proyectos en esta sección siguen un patrón progresivo:
 
 1. **Hello World** y **Hello User**: Programas de un solo archivo, compilados con `nim c` o ejecutados con `nim r`, sin Nimble. Usan exclusivamente la biblioteca estándar.
-2. **Calculator**: Primer proyecto con manifest de **Nimble** (`.nimble` con tarea `test`). Introduce la separación `src/` + `test/` y el framework `unittest` (incluido en la biblioteca estándar; no hay dependencias externas).
+2. **Calculator**: Primer proyecto con manifest de **Nimble** (`.nimble` con tarea `test`). Introduce la separación `src/` + `tests/` y el framework `unittest` (incluido en la biblioteca estándar; no hay dependencias externas).
 3. **Numbers**: Expande el patrón de Calculator a dos suites de prueba (una por enfoque probado). Nim **no garantiza TCO**, por lo que `_acc` se conserva como puente didáctico sin pruebas propias: `_rec` + `_ite` = 10 tests (22 casos).
 
 **EN:** The projects in this section follow a progressive pattern:
 
 1. **Hello World** and **Hello User**: Single-file programs, compiled with `nim c` or run with `nim r`, without Nimble. Use only the standard library.
-2. **Calculator**: First project with a **Nimble** manifest (`.nimble` with a `test` task). Introduces the `src/` + `test/` separation and the `unittest` framework (included in the standard library; no external dependencies).
+2. **Calculator**: First project with a **Nimble** manifest (`.nimble` with a `test` task). Introduces the `src/` + `tests/` separation and the `unittest` framework (included in the standard library; no external dependencies).
 3. **Numbers**: Expands the Calculator pattern to two test suites (one per tested approach). Nim **does not guarantee TCO**, so `_acc` is kept as an educational bridge without dedicated tests: `_rec` + `_ite` = 10 tests (22 cases).
 
 ---

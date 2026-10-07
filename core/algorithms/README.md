@@ -11,6 +11,7 @@ Los módulos de esta fase trabajan sobre `seq[int]`, que en Nim **es mutable**, 
 | Módulo | Especificación | Enfoque | Tests | Estado |
 |--------|---------------|---------|:-----:|:------:|
 | [`naive_sort/`](naive_sort/) | [05_Naive_Sort](https://yorche3.github.io/programming_languages/core/algorithms/05_Naive_Sort/) | `nimble test` + unittest | 3 | ✅ |
+| [`data_structures_basics/`](data_structures_basics/) | [06_Data_Structures_Basics](https://yorche3.github.io/programming_languages/core/algorithms/06_Data_Structures_Basics/) | `nimble test` + unittest | 4 | ✅ |
 
 ---
 
@@ -18,14 +19,23 @@ Los módulos de esta fase trabajan sobre `seq[int]`, que en Nim **es mutable**, 
 
 ```text
 algorithms/
-└── naive_sort/                    # 05_Naive_Sort
-    ├── naive_sort.nimble          # srcDir = "src" y task test
-    ├── .gitignore                 # Ignora el binario de los tests
+├── naive_sort/                    # 05_Naive_Sort
+│   ├── naive_sort.nimble          # srcDir = "src" y task test
+│   ├── .gitignore                 # Ignora el binario de los tests
+│   ├── src/
+│   │   └── naive_sort.nim         # selectionSort, bubbleSort, insertionSort
+│   ├── tests/
+│   │   ├── config.nims            # path a src/
+│   │   └── naive_sort_tests.nim   # 3 tests × 7 casos
+│   └── README.md
+└── data_structures_basics/        # 06_Data_Structures_Basics
+    ├── data_structures_basics.nimble
+    ├── .gitignore
     ├── src/
-    │   └── naive_sort.nim         # selectionSort, bubbleSort, insertionSort
-    ├── test/
-    │   ├── config.nims            # path a src/
-    │   └── naive_sort_tests.nim   # 3 tests × 7 casos
+    │   └── data_structures_basics.nim
+    ├── tests/
+    │   ├── config.nims
+    │   └── data_structures_basics_tests.nim
     └── README.md
 ```
 
@@ -40,9 +50,9 @@ algorithms/
 | **Manifiesto** | `{modulo}.nimble` — `version`, `author`, `license`, `srcDir = "src"`, `requires "nim >= 2.0.0"` y `task test` |
 | **Framework de tests** | `unittest`, de la biblioteca estándar (`suite`/`test`/`check`/`checkpoint`) |
 | **Verificación estática** | `nim check`, el verificador semántico del propio compilador |
-| **Runner** | La tarea `test` del `.nimble`, que lanza `nim c -r test/{modulo}_tests.nim` |
-| **Separación** | `src/{Modulo}.nim` (módulo) ↔ `test/` (suites `*_tests.nim`) |
-| **Acceso al módulo** | `switch("path", "$projectDir/../src")` en `test/config.nims`, que permite `import {modulo}` sin flags |
+| **Runner** | La tarea `test` del `.nimble`, que lanza `nim c -r tests/{modulo}_tests.nim` |
+| **Separación** | `src/{Modulo}.nim` (módulo) ↔ `tests/` (suites `*_tests.nim`) |
+| **Acceso al módulo** | `switch("path", "$projectDir/../src")` en `tests/config.nims`, que permite `import {modulo}` sin flags |
 | **Iteración** | Bucles `for`/`while` nativos sobre `seq[int]` |
 | **Indexación** | **0-based**, como el pseudocódigo |
 | **Visibilidad** | `proc nombre*` exporta; sin `*` el procedimiento queda privado del módulo |
@@ -59,6 +69,10 @@ algorithms/
 ```bash
 # Naive Sort Tests
 cd naive_sort
+nimble test
+
+# Data Structures Basics Tests
+cd data_structures_basics
 nimble test
 ```
 
