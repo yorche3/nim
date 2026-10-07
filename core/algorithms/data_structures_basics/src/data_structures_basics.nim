@@ -56,57 +56,111 @@ proc setNext*(node: Node, nextNode: Node) =
 # ---------------------------------------------------------------------------
 
 func getHead*(list: LinkedList): int =
-  return -1
+  if list.head == nil:
+    return -1
+  return list.head.value
 
 proc insertHead*(list: var LinkedList, value: int) =
-  discard
+  let new_node = newNode(value)
+  new_node.next = list.head
+  list.head = new_node
+  if list.tail == nil:
+    list.tail = new_node
+  list.count.inc()
 
 proc insertTail*(list: var LinkedList, value: int) =
-  discard
+  let new_node = newNode(value)
+  if list.tail == nil:
+    list.head = new_node
+    list.tail = new_node
+  else:
+    list.tail.next = new_node
+    list.tail = new_node
+  list.count.inc()
 
 proc delete*(list: var LinkedList, value: int): bool =
+  var current = list.head
+  var previous: Node = nil
+  while current != nil:
+    if current.value == value:
+      if previous != nil:
+        previous.next = current.next
+      else:
+        list.head = current.next
+      if current == list.tail:
+        list.tail = previous
+      list.count.dec()
+      return true
+    previous = current
+    current = current.next
   return false
 
 func isEmpty*(list: LinkedList): bool =
-  return false
+  return list.count == 0
 
 func size*(list: LinkedList): int =
-  return 0
+  return list.count
 
 # ---------------------------------------------------------------------------
 # Stack
 # ---------------------------------------------------------------------------
 
 proc push*(stack: var Stack, value: int) =
-  discard
+  let new_node = newNode(value)
+  new_node.next = stack.top
+  stack.top = new_node
+  stack.count.inc()
 
 proc pop*(stack: var Stack): int =
-  return -1
+  if stack.top == nil:
+    return -1
+  let value = stack.top.value
+  stack.top = stack.top.next
+  stack.count.dec()
+  return value
 
 func peek*(stack: Stack): int =
-  return -1
+  if stack.top == nil:
+    return -1
+  return stack.top.value
 
 func isEmpty*(stack: Stack): bool =
-  return false
+  return stack.count == 0
 
 func size*(stack: Stack): int =
-  return 0
+  return stack.count
 
 # ---------------------------------------------------------------------------
 # Queue
 # ---------------------------------------------------------------------------
 
 proc enqueue*(queue: var Queue, value: int) =
-  discard
+  let new_node = newNode(value)
+  if queue.rear == nil:
+    queue.front = new_node
+    queue.rear = new_node
+  else:
+    queue.rear.next = new_node
+    queue.rear = new_node
+  queue.count.inc()
 
 proc dequeue*(queue: var Queue): int =
-  return -1
+  if queue.front == nil:
+    return -1
+  let value = queue.front.value
+  queue.front = queue.front.next
+  if queue.front == nil:
+    queue.rear = nil
+  queue.count.dec()
+  return value
 
 func peek*(queue: Queue): int =
-  return -1
+  if queue.front == nil:
+    return -1
+  return queue.front.value
 
 func isEmpty*(queue: Queue): bool =
-  return false
+  return queue.count == 0
 
 func size*(queue: Queue): int =
-  return 0
+  return queue.count

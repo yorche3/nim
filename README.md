@@ -69,13 +69,13 @@ nim c <File>.nim     # compila a binario nativo y luego ./<File>
 
 ### 2. Proyecto con pruebas unitarias (Nimble + unittest)
 
-**ES:** Para proyectos que requieren pruebas unitarias, se usa **Nimble** (manifiesto `.nimble` con tarea `test`) y **unittest**, el framework de pruebas incluido en la biblioteca estándar. El código fuente se organiza en `src/` y las pruebas en `test/` (con `config.nims` que añade `src/` al `--path`).
+**ES:** Para proyectos que requieren pruebas unitarias, se usa **Nimble** (manifiesto `.nimble` con tarea `test`) y **unittest**, el framework de pruebas incluido en la biblioteca estándar. El código fuente se organiza en `src/` y las pruebas en `tests/` (con `config.nims` que añade `src/` al `--path`).
 
-**EN:** For projects that require unit tests, **Nimble** (a `.nimble` manifest with a `test` task) and **unittest**, the test framework included in the standard library, are used. Source code goes in `src/` and tests in `test/` (with a `config.nims` that adds `src/` to `--path`).
+**EN:** For projects that require unit tests, **Nimble** (a `.nimble` manifest with a `test` task) and **unittest**, the test framework included in the standard library, are used. Source code goes in `src/` and tests in `tests/` (with a `config.nims` that adds `src/` to `--path`).
 
 ```bash
 nimble test                                    # ejecuta la tarea test del .nimble
-nim c -r test/<suite>.nim                      # alternativa directa sin Nimble
+nim c -r tests/<suite>.nim                     # alternativa directa sin Nimble
 ```
 
 ---

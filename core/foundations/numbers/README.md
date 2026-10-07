@@ -13,9 +13,9 @@ Tres enfoques de implementación para los mismos 5 algoritmos: **recursivo direc
 | [`numbers.nimble`](numbers.nimble) | Manifiesto de Nimble — declara el paquete y la tarea `test` (ejecuta las dos suites). |
 | [`.gitignore`](.gitignore) | Ignora los binarios generados por la compilación de los tests. |
 | [`src/numbers.nim`](src/numbers.nim) | Módulo `numbers` — 15 procedimientos (3 enfoques × 5 algoritmos) + 4 helpers privados (no exportados). |
-| [`test/recursive_tests.nim`](test/recursive_tests.nim) | Suite recursiva: 5 tests (11 casos). |
-| [`test/iterative_tests.nim`](test/iterative_tests.nim) | Suite iterativa: 5 tests (11 casos). |
-| [`test/config.nims`](test/config.nims) | Añade `src/` al `--path` para resolver `import numbers`. |
+| [`tests/recursive_tests.nim`](tests/recursive_tests.nim) | Suite recursiva: 5 tests (11 casos). |
+| [`tests/iterative_tests.nim`](tests/iterative_tests.nim) | Suite iterativa: 5 tests (11 casos). |
+| [`tests/config.nims`](tests/config.nims) | Añade `src/` al `--path` para resolver `import numbers`. |
 
 **Estructura de directorios esperada:**
 
@@ -25,7 +25,7 @@ numbers/
 ├── .gitignore                   # Ignora los binarios de los tests
 ├── src/
 │   └── numbers.nim              # 15 procedimientos + 4 helpers privados
-└── test/
+└── tests/
     ├── config.nims              # path a src/
     ├── recursive_tests.nim      # Tests recursivos (5 tests, 11 casos)
     └── iterative_tests.nim      # Tests iterativos (5 tests, 11 casos)
@@ -35,7 +35,7 @@ numbers/
 
 ## 🛠️ Enfoque y construcción / Approach & Build
 
-**ES:** Sigue el mismo patrón que [`calculator`](../unit_test/calculator/): paquete de Nimble + `unittest`, con layout `src/` + `test/`. Los 15 procedimientos se organizan en 3 grupos por enfoque:
+**ES:** Sigue el mismo patrón que [`calculator`](../unit_test/calculator/): paquete de Nimble + `unittest`, con layout `src/` + `tests/`. Los 15 procedimientos se organizan en 3 grupos por enfoque:
 
 | Enfoque | Sufijo | Ejemplo | ¿Tiene tests directos? |
 | ------- | ------ | ------- | :---------------------: |
@@ -43,7 +43,7 @@ numbers/
 | Recursivo con acumulador | `...Acc` | `fibonacciAcc(n)` | ❌ No (ver nota TCO) |
 | Iterativo | `...Ite` | `fibonacciIte(n)` | ✅ Sí |
 
-**EN:** Follows the same pattern as [`calculator`](../unit_test/calculator/): a Nimble package + `unittest`, with a `src/` + `test/` layout. The 15 procedures are organized into 3 groups by approach:
+**EN:** Follows the same pattern as [`calculator`](../unit_test/calculator/): a Nimble package + `unittest`, with a `src/` + `tests/` layout. The 15 procedures are organized into 3 groups by approach:
 
 | Approach | Suffix | Example | Direct tests? |
 | -------- | ------ | ------- | :-----------: |
@@ -75,8 +75,8 @@ srcDir        = "src"
 requires "nim >= 2.0.0"
 
 task test, "Run the unit tests":
-    exec "nim c -r test/recursive_tests.nim"
-    exec "nim c -r test/iterative_tests.nim"
+    exec "nim c -r tests/recursive_tests.nim"
+    exec "nim c -r tests/iterative_tests.nim"
 ```
 
 ### `src/numbers.nim` — Implementación
@@ -163,8 +163,8 @@ nimble test
 
 ```bash
 cd nim/core/foundations/numbers
-nim c -r test/recursive_tests.nim
-nim c -r test/iterative_tests.nim
+nim c -r tests/recursive_tests.nim
+nim c -r tests/iterative_tests.nim
 ```
 
 ### Salida esperada / Expected output

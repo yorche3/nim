@@ -11,4 +11,4 @@ srcDir        = "src"
 requires "nim >= 2.0.0"
 
 task test, "Run the unit tests":
-    exec "nim c -r test/calculator_test.nim"
+    exec "nim c -r tests/calculator_test.nim"

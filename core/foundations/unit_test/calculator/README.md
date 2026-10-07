@@ -11,8 +11,8 @@ Implementación de la especificación [03_Unit_Test_Calculator](https://yorche3.
 | [`calculator.nimble`](calculator.nimble) | Manifiesto de Nimble — declara el paquete y la tarea `test`. |
 | [`.gitignore`](.gitignore) | Ignora el binario generado por la compilación del test. |
 | [`src/calculator.nim`](src/calculator.nim) | Módulo `calculator` con las 5 operaciones aritméticas (procedimientos exportados con `*`). |
-| [`test/calculator_test.nim`](test/calculator_test.nim) | 5 pruebas unitarias con `suite`/`test` y `check`. |
-| [`test/config.nims`](test/config.nims) | Añade `src/` al `--path` para resolver `import calculator`. |
+| [`tests/calculator_test.nim`](tests/calculator_test.nim) | 5 pruebas unitarias con `suite`/`test` y `check`. |
+| [`tests/config.nims`](tests/config.nims) | Añade `src/` al `--path` para resolver `import calculator`. |
 
 **Estructura de directorios esperada:**
 
@@ -22,7 +22,7 @@ calculator/
 ├── .gitignore                  # Ignora el binario del test
 ├── src/
 │   └── calculator.nim          # 5 operaciones aritméticas
-└── test/
+└── tests/
     ├── config.nims             # path a src/
     └── calculator_test.nim     # 5 tests con unittest
 ```
@@ -65,7 +65,7 @@ srcDir        = "src"
 requires "nim >= 2.0.0"
 
 task test, "Run the unit tests":
-    exec "nim c -r test/calculator_test.nim"
+    exec "nim c -r tests/calculator_test.nim"
 ```
 
 ### `src/calculator.nim` — Módulo principal
@@ -105,7 +105,7 @@ proc modulus*(a, b: int): int =
     subtraction(a, p)
 ```
 
-### `test/calculator_test.nim` — Pruebas unitarias (unittest)
+### `tests/calculator_test.nim` — Pruebas unitarias (unittest)
 
 **ES:** Un `test` por operación, con los mismos casos del pseudocódigo de la especificación.
 
@@ -157,7 +157,7 @@ nimble test
 
 ```bash
 cd nim/core/foundations/unit_test/calculator
-nim c -r test/calculator_test.nim
+nim c -r tests/calculator_test.nim
 ```
 
 ### Salida esperada / Expected output

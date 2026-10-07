@@ -23,7 +23,7 @@ algorithms/
     ├── .gitignore                 # Ignora el binario de los tests
     ├── src/
     │   └── naive_sort.nim         # selectionSort, bubbleSort, insertionSort
-    ├── test/
+    ├── tests/
     │   ├── config.nims            # path a src/
     │   └── naive_sort_tests.nim   # 3 tests × 7 casos
     └── README.md
@@ -40,9 +40,9 @@ algorithms/
 | **Manifiesto** | `{modulo}.nimble` — `version`, `author`, `license`, `srcDir = "src"`, `requires "nim >= 2.0.0"` y `task test` |
 | **Framework de tests** | `unittest`, de la biblioteca estándar (`suite`/`test`/`check`/`checkpoint`) |
 | **Verificación estática** | `nim check`, el verificador semántico del propio compilador |
-| **Runner** | La tarea `test` del `.nimble`, que lanza `nim c -r test/{modulo}_tests.nim` |
-| **Separación** | `src/{Modulo}.nim` (módulo) ↔ `test/` (suites `*_tests.nim`) |
-| **Acceso al módulo** | `switch("path", "$projectDir/../src")` en `test/config.nims`, que permite `import {modulo}` sin flags |
+| **Runner** | La tarea `test` del `.nimble`, que lanza `nim c -r tests/{modulo}_tests.nim` |
+| **Separación** | `src/{Modulo}.nim` (módulo) ↔ `tests/` (suites `*_tests.nim`) |
+| **Acceso al módulo** | `switch("path", "$projectDir/../src")` en `tests/config.nims`, que permite `import {modulo}` sin flags |
 | **Iteración** | Bucles `for`/`while` nativos sobre `seq[int]` |
 | **Indexación** | **0-based**, como el pseudocódigo |
 | **Visibilidad** | `proc nombre*` exporta; sin `*` el procedimiento queda privado del módulo |
