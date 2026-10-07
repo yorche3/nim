@@ -11,6 +11,7 @@ Los módulos de esta fase trabajan sobre `seq[int]`, que en Nim **es mutable**, 
 | Módulo | Especificación | Enfoque | Tests | Estado |
 |--------|---------------|---------|:-----:|:------:|
 | [`naive_sort/`](naive_sort/) | [05_Naive_Sort](https://yorche3.github.io/programming_languages/core/algorithms/05_Naive_Sort/) | `nimble test` + unittest | 3 | ✅ |
+| [`data_structures_basics/`](data_structures_basics/) | [06_Data_Structures_Basics](https://yorche3.github.io/programming_languages/core/algorithms/06_Data_Structures_Basics/) | `nimble test` + unittest | 4 | ✅ |
 
 ---
 
@@ -18,14 +19,23 @@ Los módulos de esta fase trabajan sobre `seq[int]`, que en Nim **es mutable**, 
 
 ```text
 algorithms/
-└── naive_sort/                    # 05_Naive_Sort
-    ├── naive_sort.nimble          # srcDir = "src" y task test
-    ├── .gitignore                 # Ignora el binario de los tests
+├── naive_sort/                    # 05_Naive_Sort
+│   ├── naive_sort.nimble          # srcDir = "src" y task test
+│   ├── .gitignore                 # Ignora el binario de los tests
+│   ├── src/
+│   │   └── naive_sort.nim         # selectionSort, bubbleSort, insertionSort
+│   ├── tests/
+│   │   ├── config.nims            # path a src/
+│   │   └── naive_sort_tests.nim   # 3 tests × 7 casos
+│   └── README.md
+└── data_structures_basics/        # 06_Data_Structures_Basics
+    ├── data_structures_basics.nimble
+    ├── .gitignore
     ├── src/
-    │   └── naive_sort.nim         # selectionSort, bubbleSort, insertionSort
+    │   └── data_structures_basics.nim
     ├── tests/
-    │   ├── config.nims            # path a src/
-    │   └── naive_sort_tests.nim   # 3 tests × 7 casos
+    │   ├── config.nims
+    │   └── data_structures_basics_tests.nim
     └── README.md
 ```
 
@@ -59,6 +69,10 @@ algorithms/
 ```bash
 # Naive Sort Tests
 cd naive_sort
+nimble test
+
+# Data Structures Basics Tests
+cd data_structures_basics
 nimble test
 ```
 

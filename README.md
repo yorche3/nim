@@ -9,7 +9,7 @@ Proyectos en **Nim (2.0+)**, con programas simples compilados con `nim` y proyec
 | Módulo | Descripción |
 | ------ | ----------- |
 | [`core/foundations/`](core/foundations/) | **Fase 0 — Fundamentos**: `helloworld`, `hellouser`, `unit_test/calculator`, `numbers` |
-| [`core/algorithms/`](core/algorithms/) | **Fase 1 — Algoritmos Puros**: `naive_sort` |
+| [`core/algorithms/`](core/algorithms/) | **Fase 1 — Algoritmos Puros**: `naive_sort`, `data_structures_basics` |
 
 ---
 
@@ -34,6 +34,10 @@ nimble test
 
 # Naive Sort Tests
 cd core/algorithms/naive_sort
+nimble test
+
+# Data Structures Basics Tests
+cd core/algorithms/data_structures_basics
 nimble test
 ```
 
