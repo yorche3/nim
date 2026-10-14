@@ -8,7 +8,7 @@ Implementación de la especificación [01_Hello_World](https://yorche3.github.io
 
 | Archivo | Propósito |
 |---------|-----------|
-| [`helloworld.nim`](helloworld.nim) | Código fuente: imprime `"Hello, World! from Nim!"` en la salida estándar. |
+| [`hello_world.nim`](hello_world.nim) | Código fuente: imprime `"Hello, World! from Nim!"` en la salida estándar. |
 | `helloworld` | Binario nativo generado por `nim c` (no versionado). |
 | `nimcache/` | Caché de compilación generada por el compilador (ignorada en `.gitignore`). |
 
@@ -16,7 +16,7 @@ Implementación de la especificación [01_Hello_World](https://yorche3.github.io
 
 ```text
 helloworld/
-├── helloworld.nim   # Código fuente
+├── hello_world.nim   # Código fuente
 ├── helloworld       # Binario nativo (generado por nim c)
 ├── nimcache/        # Caché de compilación (generado, ignorado)
 └── README.md        # Este archivo
@@ -38,7 +38,7 @@ helloworld/
    mkdir -p nim/core/foundations/helloworld
    ```
 
-2. Escribir el archivo `helloworld.nim` con el código fuente.
+2. Escribir el archivo `hello_world.nim` con el código fuente.
 
 3. No se necesita ningún paso adicional de construcción o vinculación de dependencias.
 
@@ -79,14 +79,14 @@ nim --version
 
 ```bash
 cd nim/core/foundations/helloworld
-nim r helloworld.nim
+nim r hello_world.nim
 ```
 
 ### Compilar y ejecutar por separado / Compile & run separately
 
 ```bash
 cd nim/core/foundations/helloworld
-nim c helloworld.nim
+nim c hello_world.nim
 ./helloworld
 ```
 
