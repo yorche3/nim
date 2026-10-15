@@ -10,7 +10,7 @@ Lee un nombre desde la entrada estándar y saluda al usuario.
 
 | Archivo | Propósito |
 |---------|-----------|
-| [`hellouser.nim`](hellouser.nim) | Código fuente: solicita un nombre al usuario y saluda. |
+| [`hello_user.nim`](hello_user.nim) | Código fuente: solicita un nombre al usuario y saluda. |
 | `hellouser` | Binario nativo generado por `nim c` (no versionado). |
 | `nimcache/` | Caché de compilación generada por el compilador (ignorada en `.gitignore`). |
 
@@ -18,7 +18,7 @@ Lee un nombre desde la entrada estándar y saluda al usuario.
 
 ```text
 hellouser/
-├── hellouser.nim    # Código fuente
+├── hello_user.nim    # Código fuente
 ├── hellouser        # Binario nativo (generado por nim c)
 ├── nimcache/        # Caché de compilación (generado, ignorado)
 └── README.md        # Este archivo
@@ -48,7 +48,7 @@ hellouser/
    mkdir -p nim/core/foundations/hellouser
    ```
 
-2. Escribir el archivo `hellouser.nim` con el código fuente.
+2. Escribir el archivo `hello_user.nim` con el código fuente.
 
 3. No se necesita ningún paso adicional de construcción o vinculación de dependencias.
 
@@ -101,14 +101,14 @@ nim --version
 
 ```bash
 cd nim/core/foundations/hellouser
-nim r hellouser.nim
+nim r hello_user.nim
 ```
 
 ### Compilar y ejecutar por separado / Compile & run separately
 
 ```bash
 cd nim/core/foundations/hellouser
-nim c hellouser.nim
+nim c hello_user.nim
 ./hellouser
 ```
 
