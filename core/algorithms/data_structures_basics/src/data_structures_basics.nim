@@ -1,9 +1,9 @@
-# data_structures_basics — contrato y esqueletos del módulo.
+# data_structures_basics — Node, LinkedList, Stack y Queue sobre una celda común.
 #
 # Especificación: 06_Data_Structures_Basics
 #
-# Contrato del paso 4b: tipos nuevos, firmas e indicadores de fallo; el
-# algoritmo es del paso 5 y la suite, del 4c.
+# Contrato completo: tipos nuevos, firmas y cuerpos de cada operación; solo los
+# enlaces usan nil y las lecturas fallibles devuelven -1.
 #
 # Indicadores: solo el enlace de un Node puede ser nil; el resto de las
 # operaciones devuelve -1 (números), false (banderas) o 0 (contadores).
