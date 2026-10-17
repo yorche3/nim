@@ -1,2 +1,5 @@
 # Test binary
 tests/data_structures_basics_tests
+
+# Compiled module binary
+src/data_structures_basics.out
