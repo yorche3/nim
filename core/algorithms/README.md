@@ -12,6 +12,7 @@ Los módulos de esta fase trabajan sobre `seq[int]`, que en Nim **es mutable**, 
 |--------|---------------|---------|:-----:|:------:|
 | [`naive_sort/`](naive_sort/) | [05_Naive_Sort](https://yorche3.github.io/programming_languages/core/algorithms/05_Naive_Sort/) | `nimble test` + unittest | 3 | ✅ |
 | [`data_structures_basics/`](data_structures_basics/) | [06_Data_Structures_Basics](https://yorche3.github.io/programming_languages/core/algorithms/06_Data_Structures_Basics/) | `nimble test` + unittest | 4 | ✅ |
+| [`data_structures_advanced/`](data_structures_advanced/) | [07_Data_Structures_Advanced](https://yorche3.github.io/programming_languages/core/algorithms/07_Data_Structures_Advanced/) | `nimble test` + unittest | 23 | ✅ |
 
 ---
 
@@ -28,14 +29,23 @@ algorithms/
 │   │   ├── config.nims            # path a src/
 │   │   └── naive_sort_tests.nim   # 3 tests × 7 casos
 │   └── README.md
-└── data_structures_basics/        # 06_Data_Structures_Basics
-    ├── data_structures_basics.nimble
+├── data_structures_basics/        # 06_Data_Structures_Basics
+│   ├── data_structures_basics.nimble
+│   ├── .gitignore
+│   ├── src/
+│   │   └── data_structures_basics.nim
+│   ├── tests/
+│   │   ├── config.nims
+│   │   └── data_structures_basics_tests.nim
+│   └── README.md
+└── data_structures_advanced/      # 07_Data_Structures_Advanced
+    ├── data_structures_advanced.nimble
     ├── .gitignore
     ├── src/
-    │   └── data_structures_basics.nim
+    │   └── data_structures_advanced.nim
     ├── tests/
     │   ├── config.nims
-    │   └── data_structures_basics_tests.nim
+    │   └── data_structures_advanced_tests.nim
     └── README.md
 ```
 
@@ -73,6 +83,10 @@ nimble test
 
 # Data Structures Basics Tests
 cd data_structures_basics
+nimble test
+
+# Data Structures Advanced Tests
+cd data_structures_advanced
 nimble test
 ```
 

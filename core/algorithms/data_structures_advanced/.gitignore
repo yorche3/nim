@@ -1,0 +1,5 @@
+# Test binary
+tests/data_structures_advanced_tests
+
+# Compiled module binary
+src/data_structures_advanced.out
